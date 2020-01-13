@@ -43,7 +43,7 @@ function App() {
                 <span>{count}</span>
                 <Save handleSave={handleSave} />
                 <Reset reset={handleReset} />
-                <h1>List of results</h1>
+                <h1>List of results!</h1>
                 {resultList}
             </div>
         </>
