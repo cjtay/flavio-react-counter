@@ -1,24 +1,19 @@
 import React from 'react';
 import './Button.css';
 
-export default function Button({
-    sign,
-    increment,
-    handleIncrement,
-    handleDecrement
-}) {
+export default function Button({ sign, step, handleIncrease, handleDecrease }) {
     const handleClick = () => {
         if (sign === '+') {
-            handleIncrement(increment);
+            handleIncrease(step);
         } else if (sign === '-') {
-            handleDecrement(increment);
+            handleDecrease(step);
         }
     };
     return (
-        <div className="Button">
+        <div className='Button'>
             <button onClick={handleClick}>
                 {sign}
-                {increment}
+                {step}
             </button>
         </div>
     );

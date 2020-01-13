@@ -9,58 +9,42 @@ function App() {
     const [count, setCount] = useState(0);
     const [result, setResult] = useState([]);
 
-    const handleIncrement = increment => {
-        setCount(count + increment);
+    const handleIncrease = step => {
+        setCount(count + step);
     };
 
-    const handleDecrement = Decrement => {
-        setCount(count - Decrement);
+    const handleDecrease = step => {
+        setCount(count - step);
     };
 
     const handleReset = () => {
         setCount(0);
     };
 
-    const handleSave = () => {};
+    const handleSave = () => {
+        setResult(result => [...result, count]);
+    };
+
+    const resultList = result.map(r => {
+        return <p>{r}</p>;
+    });
 
     return (
         <>
-            <div className="App">
-                <Button
-                    sign={'+'}
-                    increment={1}
-                    handleIncrement={handleIncrement}
-                />
-                <Button
-                    sign={'+'}
-                    increment={10}
-                    handleIncrement={handleIncrement}
-                />
-                <Button
-                    sign={'+'}
-                    increment={100}
-                    handleIncrement={handleIncrement}
-                />
+            <div className='App'>
+                <Button sign={'+'} step={1} handleIncrease={handleIncrease} />
+                <Button sign={'+'} step={10} handleIncrease={handleIncrease} />
+                <Button sign={'+'} step={100} handleIncrease={handleIncrease} />
 
-                <Button
-                    sign={'-'}
-                    increment={1}
-                    handleDecrement={handleDecrement}
-                />
-                <Button
-                    sign={'-'}
-                    increment={10}
-                    handleDecrement={handleDecrement}
-                />
-                <Button
-                    sign={'-'}
-                    increment={100}
-                    handleDecrement={handleDecrement}
-                />
+                <Button sign={'-'} step={1} handleDecrease={handleDecrease} />
+                <Button sign={'-'} step={10} handleDecrease={handleDecrease} />
+                <Button sign={'-'} step={100} handleDecrease={handleDecrease} />
 
                 <span>{count}</span>
                 <Save handleSave={handleSave} />
                 <Reset reset={handleReset} />
+                <h1>List of results</h1>
+                {resultList}
             </div>
         </>
     );
